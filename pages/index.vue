@@ -39,6 +39,7 @@ export default {
   methods: {
     moveToDetailPage(id) {
       console.log('🔥 ~ id', id)
+      this.$router.push(`detail/${id}`)
     },
   },
 }
