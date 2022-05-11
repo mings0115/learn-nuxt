@@ -2,7 +2,9 @@
   <div class="app">
     <main>
       <div>
-        <search-input></search-input>
+        <!-- :search-keyword="searchKeyword"
+          @input="updateSearchKeyword" -->
+        <search-input v-model="searchKeyword"></search-input>
       </div>
       <ul>
         <li
@@ -38,10 +40,18 @@ export default {
     }))
     return { products }
   },
+  data() {
+    return {
+      searchKeyword: '',
+    }
+  },
   methods: {
     moveToDetailPage(id) {
       console.log('🔥 ~ id', id)
       this.$router.push(`detail/${id}`)
+    },
+    updateSearchKeyword(keyword) {
+      this.searchKeyword = keyword
     },
   },
 }
