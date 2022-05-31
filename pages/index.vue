@@ -54,6 +54,9 @@ export default {
       console.log('🔥 ~ id', id)
       this.$router.push(`detail/${id}`)
     },
+    // updateSearchKeyword(keyword) {
+    //   this.searchKeyword = keyword
+    // },
     async searchProducts() {
       const response = await fetchProductsByKeyword(this.searchKeyword)
       console.log('🔥 ~ response', response)
