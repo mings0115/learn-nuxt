@@ -1,5 +1,20 @@
 <template>
-  <div>카트 페이지.</div>
+  <div>
+    <h1>카트 페이지</h1>
+    <div>
+      <ul>
+        <li v-for="cartItem in $store.state.cartItems" :key="cartItem.id">
+          <div>
+            <img :src="cartItem.imageUrl" :alt="cartItem.name" />
+            <p>P{{ cartItem.name }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <button>구매하기</button>
+    </div>
+  </div>
 </template>
 
 <script>
