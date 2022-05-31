@@ -4,7 +4,10 @@
       <div>
         <!-- :search-keyword="searchKeyword"
           @input="updateSearchKeyword" -->
-        <search-input v-model="searchKeyword"></search-input>
+        <search-input
+          v-model="searchKeyword"
+          @search="searchProducts"
+        ></search-input>
       </div>
       <ul>
         <li
@@ -29,6 +32,7 @@
 <script>
 import axios from 'axios'
 import SearchInput from '@/components/SearchInput.vue'
+import { fetchProductsByKeyword } from '~/api'
 
 export default {
   components: { SearchInput },
@@ -50,8 +54,9 @@ export default {
       console.log('🔥 ~ id', id)
       this.$router.push(`detail/${id}`)
     },
-    updateSearchKeyword(keyword) {
-      this.searchKeyword = keyword
+    async searchProducts() {
+      const response = await fetchProductsByKeyword(this.searchKeyword)
+      console.log('🔥 ~ response', response)
     },
   },
 }
